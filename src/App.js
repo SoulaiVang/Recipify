@@ -19,8 +19,13 @@ function App() {
             placeholder="Type ingredients here"
             className="add-ingredients-input"
           />
-          <button className="add-ingredient-button">Add Ingredient</button>
+          <button className="add-ingredient-button">
+            Add Ingredient
+          </button>
         </div>
+        <p>
+          Your recipes will be displayed below
+        </p>
       </div>
     </div>
   );

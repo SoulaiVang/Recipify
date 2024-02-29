@@ -31,6 +31,9 @@ function App() {
             placeholder="Type ingredients here"
             className="add-ingredients-input"
           />
+          <p className="add-ingredients-instructions">
+            Please add one ingredient at a time
+          </p>
           <button className="add-ingredient-button" onClick={addIngredient}>
             Add Ingredient
           </button>
@@ -39,11 +42,11 @@ function App() {
           Your recipes will be displayed below
         </p>
         {/* Displaying the ingredient list */}
-        <ul>
-          {ingredientsList.map((ingredient, index) => (
-            <li key={index}>{ingredient}</li>
-          ))}
-        </ul>
+        <div className="show-ingredients">
+          <p>
+            Your current ingredients are: {ingredientsList.join(', ')}
+          </p>
+        </div>
       </div>
     </div>
   );

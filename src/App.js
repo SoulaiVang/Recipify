@@ -11,7 +11,7 @@ function App() {
 
     if (ingredientInput != null) {
       ingredientInput.addEventListener("keydown", function(press) {
-        if (press.code === "Enter") {
+        if (press.code == "Enter" || press.code == "Return") {
           addIngredient();
         }
       })

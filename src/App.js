@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import './App.css';
+import './API.js'
 
 function App() {
   const [ingredientsList, setIngredientsList] = useState([]);
   const currentIngredients = ingredientsList.join(', ');
+
+  // This works with the API 
+  // const [recipe, setRecipe] = useState();
 
   // Makes it so user can also press enter to add in ingredients as an alternative to button pressing
   if (document.readyState !== "loading") {
@@ -11,7 +15,7 @@ function App() {
 
     if (ingredientInput != null) {
       ingredientInput.addEventListener("keydown", function(press) {
-        if (press.code == "Enter" || press.code == "Return") {
+        if (press.code === "Enter" || press.code === "Return") {
           addIngredient();
         }
       })
@@ -61,6 +65,7 @@ function App() {
             Your current ingredients are: {currentIngredients}
           </p>
         </div>
+        
       </div>
     </div>
   );

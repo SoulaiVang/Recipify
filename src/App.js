@@ -3,6 +3,20 @@ import './App.css';
 
 function App() {
   const [ingredientsList, setIngredientsList] = useState([]);
+  const currentIngredients = ingredientsList.join(', ');
+
+  // Makes it so user can also press enter to add in ingredients as an alternative to button pressing
+  if (document.readyState !== "loading") {
+    const ingredientInput = document.querySelector('.add-ingredients-input');
+
+    if (ingredientInput != null) {
+      ingredientInput.addEventListener("keydown", function(press) {
+        if (press.code === "Enter") {
+          addIngredient();
+        }
+      })
+    }
+  }
 
   const addIngredient = () => {
     const ingredientInput = document.querySelector('.add-ingredients-input');
@@ -44,7 +58,7 @@ function App() {
         {/* Displaying the ingredient list */}
         <div className="show-ingredients">
           <p>
-            Your current ingredients are: {ingredientsList.join(', ')}
+            Your current ingredients are: {currentIngredients}
           </p>
         </div>
       </div>

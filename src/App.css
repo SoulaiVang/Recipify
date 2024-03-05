@@ -38,11 +38,21 @@
   height: 40px;
   align-items: center;
 }
+
 .add-ingredient-button{
-  width: 150px; /* Set the width as needed */
+  width: 125px; /* Set the width as needed */
   height: 20px;
   align-items: center;
-  margin-top: 10px;
+  margin: 10px;
+  margin-top: 20px;
+}
+
+.clear-ingredients-button{
+  width: 125px;
+  height: 20px;
+  align-items: center;
+  margin: 10px;
+  margin-top: 20px;
 }
 
 .add-ingredients {
@@ -50,16 +60,24 @@
   flex-direction: column;
   align-items: center;
 }
+
+.ingredient-buttons {
+  display: flex;
+  flex-direction: row;
+}
+
 .show-ingredients{
   color:cadetblue;
   font-size: 18px;
   font-weight: bold;
 }
+
 .display-label{
   color:darkolivegreen;
   font-size: 30px;
   text-decoration: underline;
 }
+
 .recipe{
   color:cadetblue;
   font-size: 20px;

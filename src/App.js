@@ -3,7 +3,7 @@ import './App.css';
 import axios from 'axios';
 
 function App() {
-  //Update recipe list
+  // Update recipe list
   const [ingredientsList, setIngredientsList] = useState([]);
   const currentIngredients = ingredientsList.join(', ');
 
@@ -32,8 +32,15 @@ function App() {
     searchAPI();  // RONG  :( */
   };
 
+  const resetIngredients = async () => {
+    setIngredientsList(() => []);
+    setRecipe("No recipes found.");
+  }
+
   //Search for recipes
   const [currentRecipe, setRecipe] = useState();
+  const [currentRecipePicture, setRecipePicture] = useState();
+
   const searchAPI = async () => {
     try {
       const apiKey = '45370c22079c4c5cb7ab5fd76b5711d6';
@@ -44,6 +51,7 @@ function App() {
       console.log("all titles", response.data.results.map(elem => elem.title));*/
       if (response.data.results.length > 0) {
         setRecipe(response.data.results[0].title);
+        setRecipePicture(response.data.results[0].image);
       } else {
         setRecipe('No recipes found');
       }
@@ -51,6 +59,7 @@ function App() {
       console.log("there was an ERROR!!!!", e);
     }
   }
+
   useEffect(() => {
     searchAPI();
   }, [ingredientsList]);
@@ -59,7 +68,7 @@ function App() {
     <div className="App">
       <div className="App-header">
         <h1>
-          Welcome to the recipe finder!
+          Welcome to the Recipe Finder!
         </h1>
       </div>
       <div className="App-content">
@@ -75,23 +84,28 @@ function App() {
           <p className="add-ingredients-instructions">
             Please add one ingredient at a time
           </p>
-          <button className="add-ingredient-button" onClick={addIngredient}>
-            Add Ingredient
-          </button>
+          <div className="ingredient-buttons">
+            <button className="add-ingredient-button" onClick={addIngredient}>
+              Add Ingredient
+            </button>
+            <button className="clear-ingredients-button" onClick={resetIngredients}>
+              Clear Ingredients
+            </button>
+          </div>
         </div>
         <div className="show-ingredients">
           <p>
             Your current ingredients are: {currentIngredients}
           </p>
         </div>
-        <div>
-          <p className='display-label'>
+        <p className='display-label'>
             Your recipe will be displayed below
-          </p>
-          <p className='recipe'>
-            Top recipe: {currentRecipe}
-          </p>
-        </div>
+        </p>
+        <p className='recipe'>
+          Top Recipe: {currentRecipe}
+        </p>
+        <img className="recipePicture" src={currentRecipePicture}>
+        </img>
       </div>
     </div>
   );

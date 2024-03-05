@@ -53,5 +53,15 @@
 .show-ingredients{
   color:cadetblue;
   font-size: 18px;
-  font-style: italic;
+  font-weight: bold;
+}
+.display-label{
+  color:darkolivegreen;
+  font-size: 30px;
+  text-decoration: underline;
+}
+.recipe{
+  color:cadetblue;
+  font-size: 20px;
+  font-weight: bold;
 }

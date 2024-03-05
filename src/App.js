@@ -19,7 +19,7 @@ function App() {
     }
   }
 
-  const addIngredient = () => {
+  const addIngredient = async () => {
     const ingredientInput = document.querySelector('.add-ingredients-input');
     const newIngredient = ingredientInput.value.trim();
 
@@ -27,26 +27,33 @@ function App() {
       setIngredientsList((prevList) => [...prevList, newIngredient]);
       ingredientInput.value = ''; // Clear the input field after adding the ingredient
     }
-    // when ingredients are updated then make an API Call
-    searchAPI();  // RONG  :(
+    
+    /* when ingredients are updated then make an API Call
+    searchAPI();  // RONG  :( */
   };
 
   //Search for recipes
-  async function searchAPI() {
+  const [currentRecipe, setRecipe] = useState();
+  const searchAPI = async () => {
     try {
       const apiKey = '45370c22079c4c5cb7ab5fd76b5711d6';
       console.log("about to make request with ingredients:", ingredientsList)
       let response = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&includeIngredients=${ingredientsList}`)
       console.log("got response", response);
-      console.log("all titles", response.data.results.map(elem => elem.title));
-      // setRecipe(response.data.results[1].title)
+      /*Reference below to access data
+      console.log("all titles", response.data.results.map(elem => elem.title));*/
+      if (response.data.results.length > 0) {
+        setRecipe(response.data.results[0].title);
+      } else {
+        setRecipe('No recipes found');
+      }
     } catch(e) {
       console.log("there was an ERROR!!!!", e);
     }
   }
-  // useEffect(() => {
-  //   searchAPI();
-  // }, []);
+  useEffect(() => {
+    searchAPI();
+  }, [ingredientsList]);
 
   return (
     <div className="App">
@@ -72,16 +79,19 @@ function App() {
             Add Ingredient
           </button>
         </div>
-        <p>
-          Your recipes will be displayed below
-        </p>
-        {/* Displaying the ingredient list */}
         <div className="show-ingredients">
           <p>
             Your current ingredients are: {currentIngredients}
           </p>
         </div>
-        
+        <div>
+          <p className='display-label'>
+            Your recipe will be displayed below
+          </p>
+          <p className='recipe'>
+            Top recipe: {currentRecipe}
+          </p>
+        </div>
       </div>
     </div>
   );

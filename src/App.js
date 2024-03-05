@@ -1,15 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
-import './API.js'
+import axios from 'axios';
 
 function App() {
+  //Update recipe list
   const [ingredientsList, setIngredientsList] = useState([]);
   const currentIngredients = ingredientsList.join(', ');
 
-  // This works with the API 
-  // const [recipe, setRecipe] = useState();
-
-  // Makes it so user can also press enter to add in ingredients as an alternative to button pressing
   if (document.readyState !== "loading") {
     const ingredientInput = document.querySelector('.add-ingredients-input');
 
@@ -30,7 +27,26 @@ function App() {
       setIngredientsList((prevList) => [...prevList, newIngredient]);
       ingredientInput.value = ''; // Clear the input field after adding the ingredient
     }
+    // when ingredients are updated then make an API Call
+    searchAPI();  // RONG  :(
   };
+
+  //Search for recipes
+  async function searchAPI() {
+    try {
+      const apiKey = '45370c22079c4c5cb7ab5fd76b5711d6';
+      console.log("about to make request with ingredients:", ingredientsList)
+      let response = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&includeIngredients=${ingredientsList}`)
+      console.log("got response", response);
+      console.log("all titles", response.data.results.map(elem => elem.title));
+      // setRecipe(response.data.results[1].title)
+    } catch(e) {
+      console.log("there was an ERROR!!!!", e);
+    }
+  }
+  // useEffect(() => {
+  //   searchAPI();
+  // }, []);
 
   return (
     <div className="App">
@@ -70,6 +86,5 @@ function App() {
     </div>
   );
 }
-
 
 export default App;

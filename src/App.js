@@ -7,18 +7,6 @@ function App() {
   const [ingredientsList, setIngredientsList] = useState([]);
   const currentIngredients = ingredientsList.join(', ');
 
-  if (document.readyState !== "loading") {
-    const ingredientInput = document.querySelector('.add-ingredients-input');
-
-    if (ingredientInput != null) {
-      ingredientInput.addEventListener("keydown", function(press) {
-        if (press.code === "Enter" || press.code === "Return") {
-          addIngredient();
-        }
-      })
-    }
-  }
-
   const addIngredient = async () => {
     const ingredientInput = document.querySelector('.add-ingredients-input');
     const newIngredient = ingredientInput.value.trim();
@@ -27,14 +15,12 @@ function App() {
       setIngredientsList((prevList) => [...prevList, newIngredient]);
       ingredientInput.value = ''; // Clear the input field after adding the ingredient
     }
-    
-    /* when ingredients are updated then make an API Call
-    searchAPI();  // RONG  :( */
   };
 
   const resetIngredients = async () => {
     setIngredientsList(() => []);
     setRecipe("No recipes found.");
+    setRecipePicture("");
   }
 
   //Search for recipes
@@ -61,7 +47,17 @@ function App() {
   }
 
   useEffect(() => {
-    searchAPI();
+    if (document.readyState !== "loading") {
+      const ingredientInput = document.querySelector('.add-ingredients-input');
+  
+      if (ingredientInput != null) {
+        ingredientInput.addEventListener("keydown", function(press) {
+          if (press.code === "Enter" || press.code === "Return") {
+            addIngredient();
+          }
+        })
+      }
+    }
   }, [ingredientsList]);
 
   return (
@@ -81,6 +77,9 @@ function App() {
             placeholder="Type ingredients here"
             className="add-ingredients-input"
           />
+          <button className="search-button" onClick={searchAPI}>
+            Search
+          </button>
           <p className="add-ingredients-instructions">
             Please add one ingredient at a time
           </p>

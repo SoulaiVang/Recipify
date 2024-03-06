@@ -61,6 +61,10 @@
   align-items: center;
 }
 
+.search-button {
+  margin-top: 20px;
+}
+
 .ingredient-buttons {
   display: flex;
   flex-direction: row;

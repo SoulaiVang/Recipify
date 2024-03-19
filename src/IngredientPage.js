@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './App.css';
+import './IngredientPage.css';
 import axios from 'axios';
 
 function App() {
@@ -110,6 +110,38 @@ function App() {
       </p>
       <img className="recipePicture" src={currentRecipePicture}>
       </img>
+
+      <form>
+        <label>
+          <input type="checkbox" value=""/>
+          Eggs
+        </label>
+        <label>
+          <input type="checkbox" value=""/>Chicken
+        </label>
+        <label>
+          <input type="checkbox" value=""/>Jasmine Rice
+        </label>
+        <label>
+          <input type="checkbox" value=""/>Red Pepper
+        </label>
+        <label>
+          <input type="checkbox" value=""/>Milk
+        </label>
+        <label>
+          <input type="checkbox" value=""/>Bell Pepper
+        </label>
+        <label>
+          <input type="checkbox" value=""/>Potatoes
+        </label>
+        <label>
+          <input type="checkbox" value=""/>
+          Garlic
+        </label>
+        <label>
+          <input type="checkbox" value=""/>Onion
+        </label>
+      </form>
     </div>
   );
 }

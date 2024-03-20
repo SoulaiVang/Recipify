@@ -122,6 +122,10 @@
 
 /*Check boxes*/
 .ingredient-checkboxes {
+  align-items: right;
+  position: absolute;
+  margin-top: 25px;
+  margin-left: 600px;
   width: 100px;
   display: grid;
   grid-gap: 30px;

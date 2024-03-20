@@ -29,7 +29,7 @@ function App() {
 
   const searchAPI = async () => {
     try {
-      const apiKey = '45370c22079c4c5cb7ab5fd76b5711d6';
+      const apiKey = '34862cb5c5384e07b826f07600617d0e';
       console.log("about to make request with ingredients:", ingredientsList)
       let response = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&includeIngredients=${ingredientsList}`)
       console.log("got response", response);

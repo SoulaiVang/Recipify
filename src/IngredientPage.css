@@ -121,10 +121,9 @@
 }
 
 /*Check boxes*/
-form {
+.ingredient-checkboxes {
   width: 100px;
   display: grid;
   grid-gap: 30px;
   grid-template-columns: 1fr 1fr 1fr;
-
 }

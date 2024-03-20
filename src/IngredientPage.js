@@ -101,20 +101,20 @@ function App() {
           Search
         </button>
       </div>
+      <div className='recipe-display'>
+        <p className='display-label'>
+              Your recipe will be displayed below
+        </p>
+        <p className='recipe'>
+          Top Recipe: {currentRecipe}
+        </p>
+        <img className="recipePicture" src={currentRecipePicture} alt='No recipe chosen yet'>
+        </img>
+      </div>
 
-      <p className='display-label'>
-            Your recipe will be displayed below
-      </p>
-      <p className='recipe'>
-        Top Recipe: {currentRecipe}
-      </p>
-      <img className="recipePicture" src={currentRecipePicture}>
-      </img>
-
-      <form>
+      <div className='ingredient-checkboxes'>
         <label>
-          <input type="checkbox" value=""/>
-          Eggs
+          <input type="checkbox" value=""/>Eggs
         </label>
         <label>
           <input type="checkbox" value=""/>Chicken
@@ -123,7 +123,7 @@ function App() {
           <input type="checkbox" value=""/>Jasmine Rice
         </label>
         <label>
-          <input type="checkbox" value=""/>Red Pepper
+          <input type="checkbox" value=""/>Pasta
         </label>
         <label>
           <input type="checkbox" value=""/>Milk
@@ -135,13 +135,12 @@ function App() {
           <input type="checkbox" value=""/>Potatoes
         </label>
         <label>
-          <input type="checkbox" value=""/>
-          Garlic
+          <input type="checkbox" value=""/>Garlic
         </label>
         <label>
           <input type="checkbox" value=""/>Onion
         </label>
-      </form>
+      </div>
     </div>
   );
 }

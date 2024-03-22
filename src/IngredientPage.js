@@ -5,7 +5,7 @@ import axios from 'axios';
 function App() {
   // Update recipe list
   const [ingredientsList, setIngredientsList] = useState([]);
-  // const currentIngredients = ingredientsList.join(', ');
+  const common_ingredients = ["Eggs", "Chicken", "Jasmine Rice", "Pasta", "Milk", "Bell Pepper", "Potatoes", "Garlic", "Onion"]
 
   const addIngredient = async () => {
     const ingredientInput = document.querySelector('.add-ingredients-input');
@@ -113,33 +113,11 @@ function App() {
       </div>
 
       <div className='ingredient-checkboxes'>
-        <label>
-          <input type="checkbox" value=""/>Eggs
-        </label>
-        <label>
-          <input type="checkbox" value=""/>Chicken
-        </label>
-        <label>
-          <input type="checkbox" value=""/>Jasmine Rice
-        </label>
-        <label>
-          <input type="checkbox" value=""/>Pasta
-        </label>
-        <label>
-          <input type="checkbox" value=""/>Milk
-        </label>
-        <label>
-          <input type="checkbox" value=""/>Bell Pepper
-        </label>
-        <label>
-          <input type="checkbox" value=""/>Potatoes
-        </label>
-        <label>
-          <input type="checkbox" value=""/>Garlic
-        </label>
-        <label>
-          <input type="checkbox" value=""/>Onion
-        </label>
+        {common_ingredients.map((ingredient, index) => (
+          <label key={index}>
+            <input type="checkbox" value=""/> {ingredient}
+          </label>
+        ))}
       </div>
     </div>
   );

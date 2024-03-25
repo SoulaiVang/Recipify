@@ -7,6 +7,15 @@ function App() {
   const [ingredientsList, setIngredientsList] = useState([]);
   const common_ingredients = ["Eggs", "Chicken", "Jasmine Rice", "Pasta", "Milk", "Bell Pepper", "Potatoes", "Garlic", "Onion"]
 
+  const handleCheckboxChange = (event, ingredient) => {
+    const { checked } = event.target;
+    if (checked) { // Checking for an ingredient to get checked 
+      setIngredientsList((prevList) => [...prevList, ingredient]); // Add to the list
+    } else { // If the ingredient is not checked then keep it out of the list
+      setIngredientsList((prevList) => prevList.filter(item => item !== ingredient)); // Removes items from the list
+    }
+  };
+
   const addIngredient = async () => {
     const ingredientInput = document.querySelector('.add-ingredients-input');
     const newIngredient = ingredientInput.value.trim();
@@ -115,7 +124,12 @@ function App() {
       <div className='ingredient-checkboxes'>
         {common_ingredients.map((ingredient, index) => (
           <label key={index}>
-            <input type="checkbox" value=""/> {ingredient}
+            <input 
+            type="checkbox" 
+            value= {ingredient}
+            onChange={(event) => handleCheckboxChange(event, ingredient)}
+            /> 
+            {ingredient}
           </label>
         ))}
       </div>

@@ -55,6 +55,7 @@ function App() {
     }
   }
 
+
   useEffect(() => {
     if (document.readyState !== "loading") {
       const ingredientInput = document.querySelector('.add-ingredients-input');

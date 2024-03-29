@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import './IngredientPage.css';
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
-function App() {
+const IngredientPage = () => {
+  // Used for page redirection
+  const navigate = useNavigate();
+
   // Update recipe list
   const [ingredientsList, setIngredientsList] = useState([]);
   const common_ingredients = ["Eggs", "Chicken", "Jasmine Rice", "Pasta", "Milk", "Bell Pepper", "Potatoes", "Garlic", "Onion"]
@@ -120,6 +124,9 @@ function App() {
         </p>
         <img className="recipePicture" src={currentRecipePicture} alt='No recipe chosen yet'>
         </img>
+        <button onClick={() => navigate("/recipes")}>
+                Recipes Redirect
+        </button>
       </div>
 
       <div className='ingredient-checkboxes'>
@@ -138,4 +145,4 @@ function App() {
   );
 }
 
-export default App;
+export default IngredientPage;

@@ -59,7 +59,7 @@
 }
 
 /*Recipe display*/
-.display-label{
+/* .display-label{
   color:darkolivegreen;
   font-size: 30px;
   text-decoration: underline;
@@ -68,7 +68,7 @@
   color:cadetblue;
   font-size: 20px;
   font-weight: bold;
-}
+} */
 
 /*Right panel for current ingredients and search button*/
 .right-panel { 

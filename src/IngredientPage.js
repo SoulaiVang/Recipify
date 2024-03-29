@@ -95,6 +95,9 @@ const IngredientPage = () => {
         </button>
       </div>
 
+      <button onClick={() => navigate("/recipes")}>
+        Recipes Redirect
+      </button>
       {/* Right Panel for ingredients */}
       <div className="right-panel">
         <p className="current-ingredients-label">
@@ -116,17 +119,15 @@ const IngredientPage = () => {
         </button>
       </div>
       <div className='recipe-display'>
-        <p className='display-label'>
+        {/* <p className='display-label'>
               Your recipe will be displayed below
-        </p>
+        </p> */}
         <p className='recipe'>
           Top Recipe: {currentRecipe}
         </p>
         <img className="recipePicture" src={currentRecipePicture} alt='No recipe chosen yet'>
         </img>
-        <button onClick={() => navigate("/recipes")}>
-                Recipes Redirect
-        </button>
+        
       </div>
 
       <div className='ingredient-checkboxes'>

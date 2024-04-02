@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import './IngredientPage.css';
-import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 
 const IngredientPage = () => {
@@ -32,33 +31,7 @@ const IngredientPage = () => {
 
   const resetIngredients = async () => {
     setIngredientsList(() => []);
-    setRecipe("No recipes found.");
-    setRecipePicture("");
   }
-
-  //Search for recipes
-  const [currentRecipe, setRecipe] = useState();
-  const [currentRecipePicture, setRecipePicture] = useState();
-
-  const searchAPI = async () => {
-    try {
-      const apiKey = '34862cb5c5384e07b826f07600617d0e';
-      console.log("about to make request with ingredients:", ingredientsList)
-      let response = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&includeIngredients=${ingredientsList}`)
-      console.log("got response", response);
-      /*Reference below to access data
-      console.log("all titles", response.data.results.map(elem => elem.title));*/
-      if (response.data.results.length > 0) {
-        setRecipe(response.data.results[0].title);
-        setRecipePicture(response.data.results[0].image);
-      } else {
-        setRecipe('No recipes found');
-      }
-    } catch(e) {
-      console.log("there was an ERROR!!!!", e);
-    }
-  }
-
 
   useEffect(() => {
     if (document.readyState !== "loading") {
@@ -95,10 +68,6 @@ const IngredientPage = () => {
         </button>
       </div>
 
-      <button onClick={() => navigate("/recipes")}>
-        Recipes Redirect
-      </button>
-      {/* Right Panel for ingredients */}
       <div className="right-panel">
         <p className="current-ingredients-label">
           Current Ingredients:
@@ -114,20 +83,9 @@ const IngredientPage = () => {
         <button className="clear-ingredients-button" onClick={resetIngredients}>
             Clear Ingredients
         </button>
-        <button className="search-button" onClick={searchAPI}>
+        <button className="search-button" onClick={() => navigate(`/recipes?ingredients=${ingredientsList.join(',')}`)}>
           Search
         </button>
-      </div>
-      <div className='recipe-display'>
-        {/* <p className='display-label'>
-              Your recipe will be displayed below
-        </p> */}
-        <p className='recipe'>
-          Top Recipe: {currentRecipe}
-        </p>
-        <img className="recipePicture" src={currentRecipePicture} alt='No recipe chosen yet'>
-        </img>
-        
       </div>
 
       <div className='ingredient-checkboxes'>

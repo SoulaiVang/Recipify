@@ -30,7 +30,7 @@ const RecipesPage = () => {
             }
         };
         searchAPI();
-    });
+    }, []);
  
     return (
         <>

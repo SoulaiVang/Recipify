@@ -15,21 +15,22 @@ const RecipesPage = () => {
     const [currentRecipe, setRecipe] = useState();
     const [currentRecipePicture, setRecipePicture] = useState();
   
+    //Probably shouldnt use UseEffect because it continuously calls the API
     useEffect(() => {
         console.log(ingredientsList)
         const searchAPI = async () => {
-        try {
-            const apiKey = 'bda3bd4db6b64554b0f86c009afbccd8';
-            const response = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&includeIngredients=${ingredientsList.join(',')}`);
-            setRecipes(response.data.results);
-            setRecipe(response.data.results[0].title);
-            setRecipePicture(response.data.results[0].image);
-        } catch(e) {
-            console.log("Error fetching recipes:", e);
-        }
+            try {
+                const apiKey = 'bda3bd4db6b64554b0f86c009afbccd8';
+                const response = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&includeIngredients=${ingredientsList.join(',')}`);
+                setRecipes(response.data.results);
+                setRecipe(response.data.results[0].title);
+                setRecipePicture(response.data.results[0].image);
+            } catch(e) {
+                console.log("Error fetching recipes:", e);
+            }
         };
         searchAPI();
-    }, [ingredientsList]);
+    });
  
     return (
         <>
@@ -47,12 +48,15 @@ const RecipesPage = () => {
                 <h2 className='display-label'>
                     Your recipe(s) will be displayed below
                 </h2>
-                {recipes.map((title, index) => (
+                <h4> 
+                    {currentRecipe}
+                </h4>
+                {/* {recipes.map((title, index) => (
                     <div key={index}>
                         <h3>{recipes[index].title}</h3>
                         <img className="recipePicture" src={recipes[index].image} alt='No picture' />
                     </div>
-                ))}       
+                ))}        */}
             </div>
         </>
     );

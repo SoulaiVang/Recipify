@@ -16,11 +16,11 @@ const RecipesPage = () => {
     //Probably shouldnt use UseEffect because it continuously calls the API
     useEffect(() => {
         const searchAPI = async () => {
-            console.log("Ingredients Searched")
+            console.log("Recipes Searched")
             try {
                 const apiKey = '22823358fa704146b115b682b4ff2505';
-                const response = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&includeIngredients=${ingredientsList.join(',')}`);
-                setRecipes(response.data.results);
+                const response = await axios.get(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey}&ingredients=${ingredientsList.join(',')}`);
+                setRecipes(response.data);
             } catch(e) {
                 console.log("Error fetching recipes:", e);
             }
@@ -48,6 +48,8 @@ const RecipesPage = () => {
                     {recipes.map((title, index) => (
                         <div key={index}>
                             <h3>{recipes[index].title}</h3>
+                            <p>Used ingredient count: {recipes[index].usedIngredientCount}</p>
+                            <p>Number of ingredients still needed: {recipes[index].missedIngredientCount}</p>
                             <img className="recipePicture" src={recipes[index].image} alt='' />
                         </div>
                     ))}       

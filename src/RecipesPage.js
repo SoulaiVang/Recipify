@@ -59,7 +59,7 @@ const RecipesPage = () => {
                             ))}</p>
                             <img className="recipePicture" src={recipes[index].image} alt='' />
                         </div>
-                    ))}       
+                    ))}     
                 </h4>
             </div>
         </>

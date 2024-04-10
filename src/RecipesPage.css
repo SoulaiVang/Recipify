@@ -3,8 +3,14 @@
     color:darkolivegreen;
     font-size: 35px;
   }
-  .recipe{
-    color:cadetblue;
-    font-size: 20px;
-    font-weight: bold;
-  }
+.recipe{
+  color:cadetblue;
+  font-size: 20px;
+  font-weight: bold;
+}
+.used-ingredients{
+  color:green;
+}
+.missing-ingredients{
+  color:red;
+}

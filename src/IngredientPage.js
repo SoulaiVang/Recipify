@@ -49,11 +49,11 @@ const IngredientPage = () => {
 
   return (
     <div className="App">
-      <div className="App-header">
-        <h1>
-          Welcome to the Recipe Finder!
-        </h1>
-      </div>
+      <header class="title-header">
+        <a href="/" class="title-href">
+          <span class="title-span">Recipeify</span>
+        </a>
+    </header>
       <div className="add-ingredients">
         <input
           type="text"

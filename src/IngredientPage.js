@@ -49,56 +49,59 @@ const IngredientPage = () => {
 
   return (
     <div className="App">
-      <header class="title-header">
-        <a href="/" class="title-href">
-          <span class="title-span">Recipeify</span>
-        </a>
-    </header>
-      <div className="add-ingredients">
-        <input
-          type="text"
-          placeholder="Input ingredients here..."
-          className="add-ingredients-input"
-        />
-        <p className="add-ingredients-instructions">
-          Please add one ingredient at a time
-        </p>
-        <button className="add-ingredient-button" onClick={addIngredient}>
-            Add Ingredient
-        </button>
+      <div class="header-block">
+        <header class="title-header">
+          <a href="/" class="title-href">
+            <span class="title-span">Recipeify: Turning Your Pantry into Recipes</span>
+          </a>
+        </header>
       </div>
-
-      <div className="right-panel">
-        <p className="current-ingredients-label">
-          Current Ingredients:
-        </p>
-        <p className="ingredient-list">
-          {ingredientsList.map((ingredient, index) => (
-            <span key={index}>
+      <div className="main-interface">
+        <div className="add-ingredients">
+          <input
+            type="text"
+            placeholder="Input ingredients here..."
+            className="add-ingredients-input"
+          />
+          <p className="add-ingredients-instructions">
+            Please add one ingredient at a time
+          </p>
+          <button className="add-ingredient-button" onClick={addIngredient}>
+              Add Ingredient
+          </button>
+          <div className='ingredient-checkboxes'>
+          {common_ingredients.map((ingredient, index) => (
+            <label key={index}>
+              <input 
+              type="checkbox" 
+              value= {ingredient}
+              onChange={(event) => handleCheckboxChange(event, ingredient)}
+              /> 
               {ingredient}
-              <br />
-            </span>
+            </label>
           ))}
-        </p>
-        <button className="clear-ingredients-button" onClick={resetIngredients}>
-            Clear Ingredients
-        </button>
-        <button className="search-button" onClick={() => navigate(`/recipes?ingredients=${ingredientsList.join(',')}`)}>
-          Search
-        </button>
-      </div>
+          </div>
+        </div>
 
-      <div className='ingredient-checkboxes'>
-        {common_ingredients.map((ingredient, index) => (
-          <label key={index}>
-            <input 
-            type="checkbox" 
-            value= {ingredient}
-            onChange={(event) => handleCheckboxChange(event, ingredient)}
-            /> 
-            {ingredient}
-          </label>
-        ))}
+        <div className="right-panel">
+          <p className="current-ingredients-label">
+            Current Ingredients:
+          </p>
+          <p className="ingredient-list">
+            {ingredientsList.map((ingredient, index) => (
+              <span key={index}>
+                {ingredient}
+                <br />
+              </span>
+            ))}
+          </p>
+          <button className="clear-ingredients-button" onClick={resetIngredients}>
+              Clear Ingredients
+          </button>
+          <button className="search-button" onClick={() => navigate(`/recipes?ingredients=${ingredientsList.join(',')}`)}>
+            Search
+          </button>
+        </div>
       </div>
     </div>
   );

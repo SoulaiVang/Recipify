@@ -11,7 +11,7 @@ const IngredientPage = () => {
   const common_ingredients = ["Eggs", "Chicken", "Jasmine Rice", "Pasta", "Milk", "Bell Pepper", "Potatoes", "Garlic", "Onion"]
 
   const handleCheckboxChange = (event, ingredient) => {
-    const { checked } = event.target;
+    const {checked} = event.target;
     if (checked) { // Checking for an ingredient to get checked 
       setIngredientsList((prevList) => [...prevList, ingredient]); // Add to the list
     } else { // If the ingredient is not checked then keep it out of the list
@@ -74,7 +74,8 @@ const IngredientPage = () => {
             <label key={index}>
               <input 
               type="checkbox" 
-              value= {ingredient}
+              value={ingredient}
+              checked={ingredientsList.includes(ingredient)}
               onChange={(event) => handleCheckboxChange(event, ingredient)}
               /> 
               {ingredient}
@@ -82,7 +83,6 @@ const IngredientPage = () => {
           ))}
           </div>
         </div>
-
         <div className="right-panel">
           <p className="current-ingredients-label">
             Current Ingredients:

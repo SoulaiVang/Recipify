@@ -8,7 +8,7 @@ const IngredientPage = () => {
 
   // Update recipe list
   const [ingredientsList, setIngredientsList] = useState([]);
-  const common_ingredients = ["Eggs", "Chicken", "Jasmine Rice", "Pasta", "Milk", "Bell Pepper", "Potatoes", "Garlic", "Onion"]
+  const common_ingredients = ["Eggs", "Chicken", "Jasmine Rice", "Pasta", "Milk", "Bell Pepper", "Potatoes", "Garlic", "Onion", "Olive Oil", "Butter", "Salt", "Pepper", "Lettuce", "Ground Beef"]
 
   const handleCheckboxChange = (event, ingredient) => {
     const {checked} = event.target;

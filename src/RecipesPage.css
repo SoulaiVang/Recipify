@@ -1,16 +1,22 @@
+.page {
+  margin-left: 20px;
+}
 
-.display-label{
+.display-label {
     color:darkolivegreen;
     font-size: 35px;
   }
-.recipe{
+
+.recipe {
   color:cadetblue;
   font-size: 20px;
   font-weight: bold;
 }
-.used-ingredients{
+
+.used-ingredients {
   color:green;
 }
-.missing-ingredients{
+
+.missing-ingredients {
   color:red;
 }

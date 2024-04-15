@@ -29,7 +29,7 @@ const RecipesPage = () => {
     }, []);
  
     return (
-        <>
+        <div className='page'>
             <h1>
                 This is where the recipes will be displayed
             </h1>
@@ -62,7 +62,7 @@ const RecipesPage = () => {
                     ))}     
                 </h4>
             </div>
-        </>
+        </div>
     );
 };
  

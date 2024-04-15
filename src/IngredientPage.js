@@ -29,6 +29,10 @@ const IngredientPage = () => {
     }
   };
 
+  const removeIngredient = (ingredient) => {
+    setIngredientsList((prevList) => prevList.filter(item => item !== ingredient))
+  }
+
   const resetIngredients = async () => {
     setIngredientsList(() => []);
   }
@@ -89,7 +93,10 @@ const IngredientPage = () => {
           </p>
           <p className="ingredient-list">
             {ingredientsList.map((ingredient, index) => (
-              <span key={index}>
+              <span 
+                key={index}
+                onClick={() => removeIngredient(ingredient)}
+                >
                 {ingredient}
                 <br />
               </span>

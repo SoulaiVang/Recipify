@@ -1,22 +1,62 @@
+/*standard page layout*/
 .page {
   margin-left: 20px;
+  margin-top: 20px;
+}
+/*users ingredient list*/
+.ingredients{
+  color: #551A8B;
+  font-size: 35px;
+}
+/*info label*/
+.display-label {
+  color: #551A8B;
+  font-size: 35px;
 }
 
-.display-label {
-    color:darkolivegreen;
-    font-size: 35px;
-  }
-
-.recipe {
+.recipe-title {
   color:cadetblue;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: bold;
 }
 
+.recipe-info {
+  display: flex;
+  align-content: center;
+  margin-right: 20px;
+}
+
+/*recipe pic + info*/
+.used-ingredients-label {
+  color:green;
+  font-size: 25px;
+  margin-left: 20px;
+  padding: 5px;
+  
+  border: 1px;
+  border-style: solid;
+  border-color:green;
+  border-width: 5px;
+  border-spacing: 5px;
+}
+
+.missing-ingredients-label {
+  color:red;
+  font-size: 25px;
+  margin-left: 20px;
+  padding: 5px;
+
+  border: 1px;
+  border-style: solid;
+  border-color:red;
+  border-width: 5px;
+}
 .used-ingredients {
   color:green;
+  font-size: 16px;
 }
 
 .missing-ingredients {
   color:red;
+  font-size: 16px;
 }

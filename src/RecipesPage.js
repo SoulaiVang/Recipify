@@ -30,15 +30,13 @@ const RecipesPage = () => {
  
     return (
         <div className='page'>
-            <h1>
-                This is where the recipes will be displayed
-            </h1>
-            <h2>
-                Your current ingredients: {ingredientsList.join(", ")}
-            </h2>
             <button onClick={() => navigate(-1)}>
                 Go Back
             </button>
+            
+            <h1 className='ingredients'>
+                Your current ingredients: {ingredientsList.join(", ")}
+            </h1>
             
             <div className='recipes'>
                 <h2 className='display-label'>
@@ -47,17 +45,19 @@ const RecipesPage = () => {
                 <h4> 
                     {recipes.map((title, index) => (
                         <div key={index}>
-                            <h3>{recipes[index].title}</h3>
+                            <h3 className='recipe-title'>{recipes[index].title}</h3>
                             <p>Used ingredient count: {recipes[index].usedIngredientCount}</p>
                             {/* <p>Unused ingredient count: {recipes[index].unusedIngredients.length()}</p> */}
                             <p>Number of ingredients still needed: {recipes[index].missedIngredientCount}</p>
-                            <img className="recipePicture" src={recipes[index].image} alt='' />
-                            <p className='used-ingredients'>used ingredients: {recipes[index].usedIngredients.map((missedIngredients, index2) =>(
-                                <p>{recipes[index].usedIngredients[index2].name}</p>
-                            ))}</p>
-                            <p className='missing-ingredients'>missing ingredients: {recipes[index].missedIngredients.map((missedIngredients, index2) =>(
-                                <p>{recipes[index].missedIngredients[index2].name}</p>
-                            ))}</p>
+                            <div className='recipe-info'>
+                                <img className="recipePicture" src={recipes[index].image} alt='' />
+                                <p className='used-ingredients-label'>Used ingredients from list: {recipes[index].usedIngredients.map((missedIngredients, index2) =>(
+                                    <p className='used-ingredients'> - {recipes[index].usedIngredients[index2].name}</p>
+                                ))}</p>
+                                <p className='missing-ingredients-label'>Ingredients still need: {recipes[index].missedIngredients.map((missedIngredients, index2) =>(
+                                    <p className='missing-ingredients'> - {recipes[index].missedIngredients[index2].name}</p>
+                                ))}</p>
+                            </div>
                         </div>
                     ))}     
                 </h4>

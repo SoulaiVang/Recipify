@@ -30,25 +30,25 @@ const RecipesPage = () => {
  
     return (
         <div className='page'>
-            <button onClick={() => navigate(-1)}>
-                Go Back
+            <button className='go-back' onClick={() => navigate(-1)}>
+                Return to search
             </button>
             
             <h1 className='ingredients'>
-                Your current ingredients: {ingredientsList.join(", ")}
+                Current ingredients: {ingredientsList.join(", ")}
             </h1>
             
             <div className='recipes'>
                 <h2 className='display-label'>
-                    Your recipe(s) will be displayed below
+                    See recipes below:
                 </h2>
                 <h4> 
                     {recipes.map((title, index) => (
                         <div key={index}>
                             <h3 className='recipe-title'>{recipes[index].title}</h3>
-                            <p>Used ingredient count: {recipes[index].usedIngredientCount}</p>
+                            <p className='used-count'>Used ingredient count: {recipes[index].usedIngredientCount}</p>
                             {/* <p>Unused ingredient count: {recipes[index].unusedIngredients.length()}</p> */}
-                            <p>Number of ingredients still needed: {recipes[index].missedIngredientCount}</p>
+                            <p className='needed-count'>Number of ingredients still needed: {recipes[index].missedIngredientCount}</p>
                             <div className='recipe-info'>
                                 <img className="recipePicture" src={recipes[index].image} alt='' />
                                 <p className='used-ingredients-label'>Used ingredients from list: {recipes[index].usedIngredients.map((missedIngredients, index2) =>(

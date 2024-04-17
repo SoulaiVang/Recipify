@@ -19,7 +19,7 @@ body {
 .title-header {
   padding-bottom: 1rem;
   margin-bottom: 1.5rem;
-  border-bottom: 1px solid #04AA6D;
+  border-bottom: 2px solid #04AA6D;
 }
 
 .title-href {
@@ -29,10 +29,13 @@ body {
 }
 
 .title-span {
-  font-size: calc(1.275rem + .3vw) !important;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: calc(1.7rem + .3vw) !important;
+  font-family: Calibri;
   margin-left: 10px;
   margin-top: 10px;
+  font-style: bold;
+  text-shadow: 2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff,
+             1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
 }
 
 .main-interface {
@@ -48,13 +51,14 @@ body {
   flex-grow: 1;
   font-size: 14px;
   color:darkolivegreen;
-  font-family: 'Times New Roman';
+  font-family: Calibri;
 }
 
 .add-ingredients-input{
   width: 300px; /* Set the width as needed */
   height: 40px;
   align-items: center;
+  font-family: Calibri;
 }
 
 .add-ingredient-button{
@@ -65,6 +69,7 @@ body {
   margin-top: 20px;
   background-color: darkolivegreen;
   color: white;
+  font-family: Calibri;
 }
 
 .ingredient-buttons {
@@ -107,6 +112,8 @@ body {
   margin-left: 20px;
   text-shadow: 2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff,
              1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
+  font-family: Calibri;
+
 }
 
 .ingredient-list {
@@ -124,6 +131,7 @@ body {
   position: absolute;
   bottom: 10px;
   left: 10px;
+  font-family: Calibri;
 }
 
 .search-button {
@@ -134,4 +142,6 @@ body {
   position: absolute;
   bottom: 20px;
   right: 10px;
+  font-family: Calibri;
+
 }

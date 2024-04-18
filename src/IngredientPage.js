@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './IngredientPage.css';
 import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 
 const IngredientPage = () => {
   // Used for page redirection
@@ -37,6 +38,28 @@ const IngredientPage = () => {
     setIngredientsList(() => []);
   }
 
+  // Used to set ingredient images
+  const [ingredientImages, setImages] = useState([]);
+
+  const searchAPI = async (ingredient) => {
+    console.log("Ingredients Searched")
+    try {
+        const apiKey = '22823358fa704146b115b682b4ff2505';
+        const response = await axios.get(`https://api.spoonacular.com/food/ingredients/search?apiKey=${apiKey}&query=${ingredient}&number=1`);
+        console.log(response.data.results);
+        setImages(response.data);
+    } catch(e) {
+        console.log("Error fetching ingredient:", e);
+    }
+  };
+  
+  // To loop through the ingredient list to get each ingredient image
+  const setIngredientImages = async () => {
+    common_ingredients.forEach(element => {
+      searchAPI(element);
+    });
+  }
+
   useEffect(() => {
     if (document.readyState !== "loading") {
       const ingredientInput = document.querySelector('.add-ingredients-input');
@@ -49,6 +72,9 @@ const IngredientPage = () => {
         })
       }
     }
+
+    setIngredientImages();
+
   }, [ingredientsList]);
 
   return (
@@ -83,6 +109,7 @@ const IngredientPage = () => {
               onChange={(event) => handleCheckboxChange(event, ingredient)}
               /> 
               {ingredient}
+              {/* <img className="ingredientImage" src={ingredientImages[0].image} alt=''></img> */}
             </label>
           ))}
           </div>

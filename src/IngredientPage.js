@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './IngredientPage.css';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
+import logo from './assets/logo.png';
 
 const IngredientPage = () => {
   // Used for page redirection
@@ -82,7 +83,7 @@ const IngredientPage = () => {
       <div class="header-block">
         <header class="title-header">
           <a href="/" class="title-href">
-            <img src="assets/logo.png" alt="Recipeify Logo"></img>
+            <img class="logo" src={logo} alt="Recipeify Logo"></img>
             <span class="title-span">Recipeify: Turning Your Pantry into Recipes</span>
           </a>
         </header>

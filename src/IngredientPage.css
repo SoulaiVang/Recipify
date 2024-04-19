@@ -36,6 +36,11 @@ body {
   font-style: bold;
 }
 
+.logo {
+  width: 75px;
+  height: 75px;
+}
+
 .main-interface {
   display: flex;
   margin: 30px;

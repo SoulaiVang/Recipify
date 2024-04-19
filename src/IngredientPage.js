@@ -73,7 +73,7 @@ const IngredientPage = () => {
       }
     }
 
-    setIngredientImages();
+    //setIngredientImages();
 
   }, [ingredientsList]);
 
@@ -82,6 +82,7 @@ const IngredientPage = () => {
       <div class="header-block">
         <header class="title-header">
           <a href="/" class="title-href">
+            <img src="assets/logo.png" alt="Recipeify Logo"></img>
             <span class="title-span">Recipeify: Turning Your Pantry into Recipes</span>
           </a>
         </header>

@@ -17,7 +17,7 @@ const IngredientPage = () => {
     if (checked) { // Checking for an ingredient to get checked 
       setIngredientsList((prevList) => [...prevList, ingredient]); // Add to the list
     } else { // If the ingredient is not checked then keep it out of the list
-      setIngredientsList((prevList) => prevList.filter(item => item !== ingredient)); // Removes items from the list
+      removeIngredient(ingredient) // Removes items from the list
     }
   };
 
@@ -26,13 +26,24 @@ const IngredientPage = () => {
     const newIngredient = ingredientInput.value.trim();
 
     if (newIngredient !== '') {
-      setIngredientsList((prevList) => [...prevList, newIngredient]);
+      // If ingredient was already added, do nothing. Otherwise, add it to list
+      setIngredientsList((prevList) => containsIngredient(newIngredient) ? prevList : [...prevList, newIngredient]); 
       ingredientInput.value = ''; // Clear the input field after adding the ingredient
     }
   };
 
   const removeIngredient = (ingredient) => {
-    setIngredientsList((prevList) => prevList.filter(item => item !== ingredient))
+    setIngredientsList((prevList) => prevList.filter(item => item.toLowerCase() !== ingredient.toLowerCase()))
+  }
+
+  const containsIngredient = (ingredient) => {
+    // Only checks for case sensitivity
+    for (const item of ingredientsList) {
+      if (item.toLowerCase() === ingredient.toLowerCase()) {
+        return true
+      }
+    }
+    return false
   }
 
   const resetIngredients = async () => {
@@ -107,7 +118,7 @@ const IngredientPage = () => {
               <input 
               type="checkbox" 
               value={ingredient}
-              checked={ingredientsList.includes(ingredient)}
+              checked={containsIngredient(ingredient)}
               onChange={(event) => handleCheckboxChange(event, ingredient)}
               /> 
               {ingredient}

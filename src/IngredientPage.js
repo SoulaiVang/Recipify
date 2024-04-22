@@ -3,6 +3,7 @@ import './IngredientPage.css';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import logo from './assets/logo.png';
+import searchIcon from './assets/searchicon.png';
 
 const IngredientPage = () => {
   // Used for page redirection
@@ -101,17 +102,17 @@ const IngredientPage = () => {
       </div>
       <div className="main-interface">
         <div className="add-ingredients">
-          <input
-            type="text"
-            placeholder="Input ingredients here..."
-            className="add-ingredients-input"
-          />
+          <div className="search">
+            <input
+              type="text"
+              placeholder="Input ingredients here..."
+              className="add-ingredients-input"
+            />
+            <button className="add-ingredient-button" onClick={addIngredient}></button>
+          </div>
           <p className="add-ingredients-instructions">
             Please add one ingredient at a time
           </p>
-          <button className="add-ingredient-button" onClick={addIngredient}>
-              Add Ingredient
-          </button>
           <div className='ingredient-checkboxes'>
           {common_ingredients.map((ingredient, index) => (
             <label key={index}>

@@ -134,7 +134,7 @@ const IngredientPage = () => {
           </p>
           <p className="ingredient-list">
             {ingredientsList.map((ingredient, index) => (
-              <span 
+              <span className='selected-ingredient'
                 key={index}
                 onClick={() => removeIngredient(ingredient)}
                 >

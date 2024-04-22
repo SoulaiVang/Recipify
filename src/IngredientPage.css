@@ -139,6 +139,11 @@ body {
   position: relative;
 }
 
+.selected-ingredient:hover {
+  text-decoration: line-through;
+  color: #a05f5f;
+}
+
 .clear-ingredients-button {
   width: 125px;
   height: 20px;

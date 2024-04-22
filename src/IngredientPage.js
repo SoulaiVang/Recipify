@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import logo from './assets/logo.png';
 import searchIcon from './assets/searchicon.png';
+import test from './assets/tomato.png';
 
 const IngredientPage = () => {
   // Used for page redirection
@@ -11,7 +12,7 @@ const IngredientPage = () => {
 
   // Update recipe list
   const [ingredientsList, setIngredientsList] = useState([]);
-  const common_ingredients = ["Eggs", "Chicken", "Jasmine Rice", "Pasta", "Milk", "Bell Pepper", "Potatoes", "Garlic", "Onion", "Olive Oil", "Butter", "Salt", "Pepper", "Lettuce", "Ground Beef"]
+  const common_ingredients = [ "Bell Pepper", "Butter", "Chicken", "Eggs", "Garlic", "Ground Beef", "Jasmine Rice", "Lettuce", "Milk", "Olive Oil", "Onion", "Pasta", "Pepper", "Potatoes", "Salt"]
 
   const handleCheckboxChange = (event, ingredient) => {
     const {checked} = event.target;
@@ -116,13 +117,14 @@ const IngredientPage = () => {
           <div className='ingredient-checkboxes'>
           {common_ingredients.map((ingredient, index) => (
             <label key={index}>
+              {ingredient}
+              <img className="ingredient-image" src={test}></img>
               <input 
               type="checkbox" 
               value={ingredient}
               checked={containsIngredient(ingredient)}
               onChange={(event) => handleCheckboxChange(event, ingredient)}
               /> 
-              {ingredient}
               {/* <img className="ingredientImage" src={ingredientImages[0].image} alt=''></img> */}
             </label>
           ))}

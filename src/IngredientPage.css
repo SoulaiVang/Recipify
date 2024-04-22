@@ -53,11 +53,12 @@ body {
   align-items: center;
   flex-grow: 1;
   font-size: 14px;
-  color:darkolivegreen;
+  color:rgb(73, 87, 49);
   background-color: #C5B384;
   border-radius: 25px;
   margin-left: 50px;
   margin-right: 50px;
+  padding-bottom: 25px;
   font-family: Calibri;
 }
 
@@ -99,10 +100,23 @@ body {
 .ingredient-checkboxes {
   align-items: center;
   position: relative;
-  margin-top: 25px;
+  margin-top: 50px;
   display: grid;
-  grid-gap: 30px;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-row-gap: 50px;
+  grid-column-gap: 75px;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  font-size: 20px;
+}
+
+.ingredient-image {
+  width: 75px;
+  height: 75px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* Right panel for current ingredients and search button */

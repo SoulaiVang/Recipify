@@ -45,7 +45,9 @@ const RecipesPage = () => {
                 <h4> 
                     {recipes.map((title, index) => (
                         <div key={index}>
-                            <h3 className='recipe-title'>{recipes[index].title}</h3>
+                            <h3 className='recipe-title'
+                                onClick={() => navigate(`/selected-recipe?recipe=${JSON.stringify(recipes[index])}`)}
+                            >{recipes[index].title}</h3>
                             <p className='used-count'>Used ingredient count: {recipes[index].usedIngredientCount}</p>
                             {/* <p>Unused ingredient count: {recipes[index].unusedIngredients.length()}</p> */}
                             <p className='needed-count'>Number of ingredients still needed: {recipes[index].missedIngredientCount}</p>

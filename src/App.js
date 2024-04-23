@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import RecipesPage from "./RecipesPage";
 import IngredientPage from "./IngredientPage";
+import SelectedRecipe from "./SelectedRecipe";
  
 function App() {
     return (
@@ -21,6 +22,11 @@ function App() {
                         exact
                         path="/recipes"
                         element={<RecipesPage />}
+                    />
+                    <Route
+                        exact
+                        path="selected-recipe"
+                        element={<SelectedRecipe />}
                     />
                 </Routes>
             </BrowserRouter>

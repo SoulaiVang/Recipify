@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from 'axios';
-
-// import IngredientPage from './IngredientPage';
 import './RecipesPage.css';
 
 const RecipesPage = () => {
@@ -44,19 +42,19 @@ const RecipesPage = () => {
                 </h2>
                 <h4> 
                     {recipes.map((title, index) => (
-                        <div key={index}>
+                        <div className='recipe-overview' key={index}>
                             <h3 className='recipe-title'
                                 onClick={() => navigate(`/selected-recipe?recipe=${JSON.stringify(recipes[index])}`)}
                             >{recipes[index].title}</h3>
-                            <p className='used-count'>Used ingredient count: {recipes[index].usedIngredientCount}</p>
+                            <p className='used-count'>Used ingredient count: {recipes[index].usedIngredientCount} / {recipes[index].usedIngredientCount + recipes[index].missedIngredientCount}</p>
                             {/* <p>Unused ingredient count: {recipes[index].unusedIngredients.length()}</p> */}
                             <p className='needed-count'>Number of ingredients still needed: {recipes[index].missedIngredientCount}</p>
                             <div className='recipe-info'>
-                                <img className="recipePicture" src={recipes[index].image} alt='' />
+                                <img className="recipePicture" src={recipes[index].image} alt='Picture of the recipe' />
                                 <p className='used-ingredients-label'>Used ingredients from list: {recipes[index].usedIngredients.map((missedIngredients, index2) =>(
                                     <p className='used-ingredients'> - {recipes[index].usedIngredients[index2].name}</p>
                                 ))}</p>
-                                <p className='missing-ingredients-label'>Ingredients still need: {recipes[index].missedIngredients.map((missedIngredients, index2) =>(
+                                <p className='missing-ingredients-label'>Ingredients still needed: {recipes[index].missedIngredients.map((missedIngredients, index2) =>(
                                     <p className='missing-ingredients'> - {recipes[index].missedIngredients[index2].name}</p>
                                 ))}</p>
                             </div>

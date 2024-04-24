@@ -111,6 +111,8 @@ body {
 .ingredient-image {
   width: 75px;
   height: 75px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 label {
@@ -125,7 +127,7 @@ label {
   border-radius: 25px;
   margin-right: 100px;
   width: 300px; /* Adjust width as needed */
-  height: 500px; 
+  height: 700px; 
   background-color: #C5B384; /* Choose your desired color */
   box-sizing: border-box; /*Ensure padding is included in width/height*/
   overflow-y: auto; /* Add scroll if content overflows */

@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './IngredientPage.css';
 import { useNavigate } from "react-router-dom";
-import axios from 'axios';
-import logo from './assets/logo.png';
-import searchIcon from './assets/searchicon.png';
-import test from './assets/tomato.png';
 
 const IngredientPage = () => {
   // Used for page redirection
@@ -12,7 +8,7 @@ const IngredientPage = () => {
 
   // Update recipe list
   const [ingredientsList, setIngredientsList] = useState([]);
-  const common_ingredients = [ "Bell Pepper", "Butter", "Chicken", "Eggs", "Garlic", "Ground Beef", "Jasmine Rice", "Lettuce", "Milk", "Olive Oil", "Onion", "Pasta", "Pepper", "Potatoes", "Salt"]
+  const common_ingredients = ["Beef", "Bell Pepper", "Butter", "Chicken", "Eggs", "Garlic", "Lettuce", "Milk", "Olive Oil", "Onion", "Pasta", "Pepper", "Potatoes", "Rice", "Salt"]
 
   const handleCheckboxChange = (event, ingredient) => {
     const {checked} = event.target;
@@ -22,6 +18,12 @@ const IngredientPage = () => {
       removeIngredient(ingredient) // Removes items from the list
     }
   };
+
+  const addIngredientImage = (ingredient) => {
+    let newIngredient = '/assets/' + ingredient.toLowerCase().split(" ").join("") + '.png';
+    console.log(newIngredient);
+    return newIngredient;
+  }
 
   const addIngredient = async () => {
     const ingredientInput = document.querySelector('.add-ingredients-input');
@@ -52,28 +54,6 @@ const IngredientPage = () => {
     setIngredientsList(() => []);
   }
 
-  // Used to set ingredient images
-  const [ingredientImages, setImages] = useState([]);
-
-  const searchAPI = async (ingredient) => {
-    console.log("Ingredients Searched")
-    try {
-        const apiKey = '22823358fa704146b115b682b4ff2505';
-        const response = await axios.get(`https://api.spoonacular.com/food/ingredients/search?apiKey=${apiKey}&query=${ingredient}&number=1`);
-        console.log(response.data.results);
-        setImages(response.data);
-    } catch(e) {
-        console.log("Error fetching ingredient:", e);
-    }
-  };
-  
-  // To loop through the ingredient list to get each ingredient image
-  const setIngredientImages = async () => {
-    common_ingredients.forEach(element => {
-      searchAPI(element);
-    });
-  }
-
   useEffect(() => {
     if (document.readyState !== "loading") {
       const ingredientInput = document.querySelector('.add-ingredients-input');
@@ -86,9 +66,6 @@ const IngredientPage = () => {
         })
       }
     }
-
-    //setIngredientImages();
-
   }, [ingredientsList]);
 
   return (
@@ -96,7 +73,7 @@ const IngredientPage = () => {
       <div class="header-block">
         <header class="title-header">
           <a href="/" class="title-href">
-            <img class="logo" src={logo} alt="Recipeify Logo"></img>
+            <img class="logo" src='../assets/logo.png' alt="Recipeify Logo"></img>
             <span class="title-span">Recipeify: Turning Your Pantry into Recipes</span>
           </a>
         </header>
@@ -118,7 +95,7 @@ const IngredientPage = () => {
           {common_ingredients.map((ingredient, index) => (
             <label key={index}>
               {ingredient}
-              <img className="ingredient-image" src={test}></img>
+              <img className="ingredient-image" src={addIngredientImage(ingredient)}></img>
               <input 
               type="checkbox" 
               value={ingredient}

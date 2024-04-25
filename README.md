@@ -68,3 +68,83 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+# Recipeify App
+
+Recipeify is a web application that helps users find recipes based on the ingredients they have at hand. This README provides an overview of the main components of the application.
+
+## Components
+
+### IngredientPage Component
+
+The IngredientPage component allows users to select ingredients for recipe search.
+
+### Features
+
+Ingredient Selection: Users can select ingredients from a predefined list or manually add new ones.
+
+Dynamic UI Updates: The UI updates dynamically as ingredients are added or removed.
+Search Functionality: Users can search for recipes based on the selected ingredients.
+
+Responsive Design: The component is designed to adapt to various screen sizes.
+
+## RecipesPage Component
+
+The RecipesPage component displays recipes based on the selected ingredients.
+
+### Features
+Recipe Search: Utilizes the Spoonacular API to search for recipes based on the selected ingredients.
+
+Dynamic Rendering: Renders recipe information dynamically based on the API response.
+Navigation: Users can navigate back to ingredient selection or view detailed recipe information.
+
+## SelectedRecipe Component
+
+The SelectedRecipe component displays detailed information about a selected recipe.
+
+## Features
+Recipe Details: Displays the title and list of ingredients for the selected recipe.
+Navigation: Provides a button to navigate back to the recipes page.
+
+## Dependencies
+
+React: The application is built using React, a JavaScript library for building user interfaces.
+
+react-router-dom: Used for client-side routing within the React application.
+
+## Installation
+
+Ensure that you have Node.js and npm (or yarn) installed on your system. Then, follow these steps:
+
+Clone the repository.
+Navigate to the project directory.
+Install dependencies using npm install or yarn install.
+
+## Usage
+
+To use the application, follow these steps:
+
+Start the development server using npm start or yarn start.
+Navigate to the application URL in your web browser.
+Select ingredients on the Ingredient Page.
+View recipes on the Recipes Page.
+Click on a recipe to view detailed information on the Selected Recipe Page.
+
+## Styling
+
+The application utilizes CSS for styling. 
+
+Background Color: Sets the background color of the page.
+Header Block: Styling for the title and logo header.
+Add Ingredients: Styling for the ingredient selection section.
+Right Panel: Styling for the panel displaying current ingredients and search button.
+
+Feel free to explore the CSS file for more detailed styling information.
+
+## Contributing
+
+Contributions are welcome! 
+
+## License
+
+This project is licensed under the MIT License.

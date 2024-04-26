@@ -32,9 +32,9 @@ const RecipesPage = () => {
             <button className='go-back' onClick={() => navigate(-1)}>
                 Return to search
             </button>
-            
             <h1 className='ingredients'>
                 Current ingredients: {ingredientsList.join(", ")}
+                <img src='./assets/logo.png' className='logo-recipes'></img>
             </h1>
             
             <div className='recipes'>
@@ -48,10 +48,9 @@ const RecipesPage = () => {
                                 onClick={() => navigate(`/selected-recipe?recipe=${JSON.stringify(recipes[index])}`)}
                             >{recipes[index].title}</h3>
                             <p className='used-count'>Used ingredient count: {recipes[index].usedIngredientCount} / {recipes[index].usedIngredientCount + recipes[index].missedIngredientCount}</p>
-                            {/* <p>Unused ingredient count: {recipes[index].unusedIngredients.length()}</p> */}
                             <p className='needed-count'>Number of ingredients still needed: {recipes[index].missedIngredientCount}</p>
                             <div className='recipe-info'>
-                                <img className="recipe-picture" src={recipes[index].image} alt='Picture of the recipe' />
+                                <img className="recipe-picture" onClick={() => navigate(`/selected-recipe?recipe=${JSON.stringify(recipes[index])}`)} src={recipes[index].image} alt='Picture of the recipe' />
                                 <div className='ingredients-info'>
                                     <p className='used-ingredients-label'>Used ingredients from list: {recipes[index].usedIngredients.map((missedIngredients, index2) =>(
                                         <p className='used-ingredients'> - {recipes[index].usedIngredients[index2].name}</p>

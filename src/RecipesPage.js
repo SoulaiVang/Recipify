@@ -19,6 +19,7 @@ const RecipesPage = () => {
                 const apiKey = '22823358fa704146b115b682b4ff2505';
                 const response = await axios.get(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey}&ingredients=${ingredientsList.join(',')}`);
                 setRecipes(response.data);
+                console.log(response.data);
             } catch(e) {
                 console.log("Error fetching recipes:", e);
             }
@@ -40,7 +41,7 @@ const RecipesPage = () => {
                 <h2 className='display-label'>
                     See recipes below:
                 </h2>
-                <h4> 
+                <div className='all-recipes'>
                     {recipes.map((title, index) => (
                         <div className='recipe-overview' key={index}>
                             <h3 className='recipe-title'
@@ -50,17 +51,19 @@ const RecipesPage = () => {
                             {/* <p>Unused ingredient count: {recipes[index].unusedIngredients.length()}</p> */}
                             <p className='needed-count'>Number of ingredients still needed: {recipes[index].missedIngredientCount}</p>
                             <div className='recipe-info'>
-                                <img className="recipePicture" src={recipes[index].image} alt='Picture of the recipe' />
-                                <p className='used-ingredients-label'>Used ingredients from list: {recipes[index].usedIngredients.map((missedIngredients, index2) =>(
-                                    <p className='used-ingredients'> - {recipes[index].usedIngredients[index2].name}</p>
-                                ))}</p>
-                                <p className='missing-ingredients-label'>Ingredients still needed: {recipes[index].missedIngredients.map((missedIngredients, index2) =>(
-                                    <p className='missing-ingredients'> - {recipes[index].missedIngredients[index2].name}</p>
-                                ))}</p>
+                                <img className="recipe-picture" src={recipes[index].image} alt='Picture of the recipe' />
+                                <div className='ingredients-info'>
+                                    <p className='used-ingredients-label'>Used ingredients from list: {recipes[index].usedIngredients.map((missedIngredients, index2) =>(
+                                        <p className='used-ingredients'> - {recipes[index].usedIngredients[index2].name}</p>
+                                    ))}</p>
+                                    <p className='missing-ingredients-label'>Ingredients still needed: {recipes[index].missedIngredients.map((missedIngredients, index2) =>(
+                                        <p className='missing-ingredients'> - {recipes[index].missedIngredients[index2].name}</p>
+                                    ))}</p>
+                                </div>
                             </div>
                         </div>
                     ))}     
-                </h4>
+                </div>
             </div>
         </div>
     );

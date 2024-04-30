@@ -95,7 +95,7 @@ const IngredientPage = () => {
           {common_ingredients.map((ingredient, index) => (
             <label key={index}>
               {ingredient}
-              <img className="ingredient-image" src={addIngredientImage(ingredient)}></img>
+              <img className="ingredient-image" src={addIngredientImage(ingredient)} alt='ingredient placeholder'></img>
               <input 
               type="checkbox" 
               value={ingredient}

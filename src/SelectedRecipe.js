@@ -71,15 +71,28 @@ const SelectedRecipe = () =>{
                 ))}
             </div>
 
-            <a href={adv_information.sourceUrl} className='recipe-url'>Visit Recipe Page</a>
-
-            {/* <div className='instructions'> 
-                
+            <div className='list'> 
+                <h3 className='list-label'>
+                    Instructions:
+                </h3>
                 <p>
-                    {analyzedInstructions[0].steps[0].number}
-                    
+                    {adv_information.analyzedInstructions[0].steps[0].number} . {adv_information.analyzedInstructions[0].steps[0].step} 
                 </p>
+                <p>
+                    {adv_information.analyzedInstructions[0].steps[1].number} . {adv_information.analyzedInstructions[0].steps[1].step} 
+                </p>
+            </div>
+
+            {/* <div className='list'>
+                <h3 className='list-label'>
+                    Instructions:
+                </h3>
+                {adv_information.analyzedInstructions[0].steps.map((name, index) => (
+                    <p>{name.number} . {name.step}</p>
+                ))}
             </div> */}
+
+            <a href={adv_information.sourceUrl} className='recipe-url' target="_blank">Visit Recipe Page</a>
 
         </div>
     );

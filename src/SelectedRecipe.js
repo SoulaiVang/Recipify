@@ -10,7 +10,7 @@ const SelectedRecipe = () =>{
     const queryParams = new URLSearchParams(location.search);
     const recipe = JSON.parse(queryParams.get('recipe'));
     
-    const [adv_information, setadv_information] = useState([]);
+    const [adv_information, setadv_information] = useState({});
   
     //Probably shouldnt use UseEffect because it continuously calls the API
     useEffect(() => {
@@ -19,7 +19,7 @@ const SelectedRecipe = () =>{
             try {
                 const apiKey = '22823358fa704146b115b682b4ff2505';
                 const response = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&query=${recipe.title}&addRecipeInformation=true&addRecipeInstructions=true&addRecipeNutrition=true`);
-                setadv_information(response.data.results[0]);
+                setadv_information(response.data.results[0] || {});
                 // console.log(adv_information[0].steps)
             } catch(e) {
                 console.log("Error fetching recipes:", e);
@@ -36,6 +36,7 @@ const SelectedRecipe = () =>{
             <h1 className='selected-recipe'>
                 {recipe.title}
             </h1>
+            
             {/* Advanced info(time, servings, nutritional facts) */ }
             <div className='time'>
                 <img src='./assets/clock.png' alt='clock photo' className='item'></img>
@@ -48,11 +49,12 @@ const SelectedRecipe = () =>{
             
             <div className='list'>
                 <h3 className='list-label'>Calorie breakdown: </h3>
-                <p>{adv_information?.nutrition?.caloricBreakdown?.percentProtein} % Protein</p>
-                <p>{adv_information?.nutrition?.caloricBreakdown?.percentFat} % Fat</p>
-                <p>{adv_information?.nutrition?.caloricBreakdown?.percentCarbs} % Carbohydrates</p>
+                <p>{adv_information.nutrition?.caloricBreakdown?.percentProtein} % Protein</p>
+                <p>{adv_information.nutrition?.caloricBreakdown?.percentFat} % Fat</p>
+                <p>{adv_information.nutrition?.caloricBreakdown?.percentCarbs} % Carbohydrates</p>
             </div>
             
+            {/* Ingredients */}
             <div className='list'>
                 <h3 className='list-label'>
                     Ingredients:
@@ -69,19 +71,8 @@ const SelectedRecipe = () =>{
                 ))}
             </div>
 
-            {/* <div className='list'> 
-                <h3 className='list-label'>
-                    Instructions:
-                </h3>
-                <p>
-                    {adv_information.analyzedInstructions[0].steps[0].number} . {adv_information.analyzedInstructions[0].steps[0].step} 
-                </p>
-                <p>
-                    {adv_information.analyzedInstructions[0].steps[1].number} . {adv_information.analyzedInstructions[0].steps[1].step} 
-                </p>
-            </div> */}
-
-            {/* <div className='list'>
+            {/* Instructions */}
+            <div className='list'>
                 <h3 className='list-label'>
                     Instructions:
                 </h3>
@@ -89,12 +80,13 @@ const SelectedRecipe = () =>{
                     console.log("about to map elem:", step_object);
                     return(<p>{step_object.number} . {step_object.step}</p>);
                 })}
-            </div> */}
+            </div>
 
             <a href={adv_information.sourceUrl} className='recipe-url' target="_blank">Visit Recipe Page</a>
 
         </div>
     );
+    
 }
 
 export default SelectedRecipe;

@@ -19,7 +19,7 @@ const RecipesPage = () => {
                 const apiKey = '22823358fa704146b115b682b4ff2505';
                 const response = await axios.get(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey}&ingredients=${ingredientsList.join(',')}`);
                 setRecipes(response.data);
-                console.log(response.data);
+                console.log("data retrieved" + response.data);
             } catch(e) {
                 console.log("Error fetching recipes:", e);
             }

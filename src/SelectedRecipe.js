@@ -11,7 +11,6 @@ const SelectedRecipe = () =>{
     const recipe = JSON.parse(queryParams.get('recipe'));
     
     const [adv_information, setadv_information] = useState([]);
-    // var analyzedInstructions = useState();
   
     //Probably shouldnt use UseEffect because it continuously calls the API
     useEffect(() => {
@@ -21,8 +20,7 @@ const SelectedRecipe = () =>{
                 const apiKey = '22823358fa704146b115b682b4ff2505';
                 const response = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&query=${recipe.title}&addRecipeInformation=true&addRecipeInstructions=true&addRecipeNutrition=true`);
                 setadv_information(response.data.results[0]);
-                // analyzedInstructions = adv_information.analyzedInstructions;
-                // console.log(analyzedInstructions[0].steps[0].step)
+                // console.log(adv_information[0].steps)
             } catch(e) {
                 console.log("Error fetching recipes:", e);
             }
@@ -71,7 +69,7 @@ const SelectedRecipe = () =>{
                 ))}
             </div>
 
-            <div className='list'> 
+            {/* <div className='list'> 
                 <h3 className='list-label'>
                     Instructions:
                 </h3>
@@ -81,15 +79,16 @@ const SelectedRecipe = () =>{
                 <p>
                     {adv_information.analyzedInstructions[0].steps[1].number} . {adv_information.analyzedInstructions[0].steps[1].step} 
                 </p>
-            </div>
+            </div> */}
 
             {/* <div className='list'>
                 <h3 className='list-label'>
                     Instructions:
                 </h3>
-                {adv_information.analyzedInstructions[0].steps.map((name, index) => (
-                    <p>{name.number} . {name.step}</p>
-                ))}
+                {adv_information.analyzedInstructions[0].steps.map((step_object) => {
+                    console.log("about to map elem:", step_object);
+                    return(<p>{step_object.number} . {step_object.step}</p>);
+                })}
             </div> */}
 
             <a href={adv_information.sourceUrl} className='recipe-url' target="_blank">Visit Recipe Page</a>

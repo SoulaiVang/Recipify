@@ -73,7 +73,7 @@ const IngredientPage = () => {
         <header class="title-header">
           <a href="/" class="title-href">
             <img class="logo" src='../assets/logo.png' alt="Recipeify Logo"></img>
-            <span className="title-span">Recipify: Turning Your Pantry into Recipes</span>
+            <span className="title-span">Receipify: Turning Your Pantry into Recipes</span>
           </a>
         </header>
       </div>

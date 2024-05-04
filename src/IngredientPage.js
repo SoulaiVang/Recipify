@@ -21,7 +21,6 @@ const IngredientPage = () => {
 
   const addIngredientImage = (ingredient) => {
     let newIngredient = '/assets/' + ingredient.toLowerCase().split(" ").join("") + '.png';
-    console.log(newIngredient);
     return newIngredient;
   }
 

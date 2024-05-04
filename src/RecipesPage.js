@@ -30,16 +30,16 @@ const RecipesPage = () => {
     return (
         <div className='page'>
             <button className='go-back' onClick={() => navigate(-1)}>
-                Return to search
+                Return to Search
             </button>
             <h1 className='ingredients'>
-                Current ingredients: {ingredientsList.join(", ")}
+                Current Ingredients: {ingredientsList.join(", ")}
                 <img src='./assets/logo.png' className='logo-recipes' alt='logo'></img>
             </h1>
             
             <div className='recipes'>
                 <h2 className='display-label'>
-                    See recipes below:
+                    See Recipes Below:
                 </h2>
                 <div className='all-recipes'>
                     {recipes.map((title, index) => (

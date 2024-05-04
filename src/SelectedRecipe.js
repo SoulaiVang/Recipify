@@ -16,7 +16,7 @@ const SelectedRecipe = () =>{
     useEffect(() => {
         const searchAPI = async () => {
             try {
-                const apiKey = '3305701f558f4c9fb84207d5f712276f';
+                const apiKey = '22823358fa704146b115b682b4ff2505';
                 const response = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&query=${recipe.title}&addRecipeInformation=true&addRecipeInstructions=true&addRecipeNutrition=true`);
                 setadv_information(response.data.results[0] || {});
             } catch(e) {

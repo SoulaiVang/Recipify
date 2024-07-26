@@ -46,16 +46,23 @@ Recipeify is a web application that helps users find recipes based on the ingred
 ### Features
 
 Ingredient Selection: Users can select ingredients from a predefined list or manually add new ones.
+
 Dynamic UI Updates: The UI updates dynamically as ingredients are added or removed.
+
 Search Functionality: Users can search for recipes based on the selected ingredients.
+
 Responsive Design: The component is designed to adapt to various screen sizes.
+
 Recipe Search: Utilizes the Spoonacular API to search for recipes based on the selected ingredients.
+
 Dynamic Rendering: Renders recipe information dynamically based on the API response.
+
 Recipe Details: Displays the title and list of ingredients for the selected recipe.
 
 ## Dependencies
 
 React: The application is built using React, a JavaScript library for building user interfaces.
+
 react-router-dom: Used for client-side routing within the React application.
 
 ## Installation

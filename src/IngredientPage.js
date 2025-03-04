@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './IngredientPage.css';
 import { useNavigate } from "react-router-dom";
+import Navbar from './components/Navbar';
 
 const IngredientPage = () => {
   // Used for page redirection
@@ -65,71 +66,71 @@ const IngredientPage = () => {
         })
       }
     }
-  }, [ingredientsList]);
+  }, [addIngredient]);
 
   return (
-    <div className="App">
-      <div class="header-block">
-        <header class="title-header">
-          <a href="/" class="title-href">
-            <img class="logo" src='../assets/logo.png' alt="Recipeify Logo"></img>
-            <span className="title-span">Receipify: Turning Your Pantry into Recipes</span>
-          </a>
-        </header>
-      </div>
-      <div className="main-interface">
-        <div className="add-ingredients">
-          <div className="search">
-            <input
-              type="text"
-              placeholder="Input ingredients here..."
-              className="add-ingredients-input"
-            />
-            <button className="add-ingredient-button" onClick={addIngredient}></button>
-          </div>
-          <p className="add-ingredients-instructions">
-            Please add one ingredient at a time
-          </p>
-          <div className='ingredient-checkboxes'>
-          {common_ingredients.map((ingredient, index) => (
-            <label key={index}>
-              {ingredient}
-              <img className="ingredient-image" src={addIngredientImage(ingredient)} alt='ingredient placeholder'></img>
-              <input 
-              type="checkbox" 
-              value={ingredient}
-              checked={containsIngredient(ingredient)}
-              onChange={(event) => handleCheckboxChange(event, ingredient)}
-              /> 
-              {/* <img className="ingredientImage" src={ingredientImages[0].image} alt=''></img> */}
-            </label>
-          ))}
-          </div>
-        </div>
-        <div className="right-panel">
-          <p className="current-ingredients-label">
-            Current Ingredients:
-          </p>
-          <p className="ingredient-list">
-            {ingredientsList.map((ingredient, index) => (
-              <span className='selected-ingredient'
-                key={index}
-                onClick={() => removeIngredient(ingredient)}
+      <>
+        <Navbar></Navbar>
+
+        <div className="main-interface">
+          <div className="add-ingredients">
+            <div className="search">
+              <input
+                type="text"
+                placeholder="Input ingredients here..."
+                className="add-ingredients-input" />
+              <button className="add-ingredient-button" onClick={addIngredient}></button>
+            </div>
+            <h1>
+              Please add one ingredient at a time
+            </h1>
+            <div className='ingredient-checkboxes'>
+              {common_ingredients.map((ingredient, index) => (
+                <label
+                  key={index}
+                  className={`ingredient-label ${containsIngredient(ingredient) ? 'selected' : ''}`}
                 >
-                {ingredient}
-                <br />
-              </span>
-            ))}
-          </p>
-          <button className="clear-ingredients-button" onClick={resetIngredients}>
-              Clear Ingredients
-          </button>
-          <button className="search-button" onClick={() => navigate(`/recipes?ingredients=${ingredientsList.join(',')}`)}>
-            Search
-          </button>
-        </div>
+                  <input
+                    type="checkbox"
+                    value={ingredient}
+                    checked={containsIngredient(ingredient)}
+                    onChange={(event) => handleCheckboxChange(event, ingredient)}
+                    className="hidden-checkbox" />
+                  <img
+                    className={`ingredient-image ${containsIngredient(ingredient) ? 'selected' : ''}`}
+                    src={addIngredientImage(ingredient)}
+                    alt={ingredient} />
+                  {ingredient}
+                </label>
+              ))}
+            </div>
+          </div>
+
+          <div className="right-panel">
+            <h1 className="current-ingredients-label">
+              Current Ingredients:
+            </h1>
+            <ul className="ingredient-list">
+              {ingredientsList.map((ingredient, index) => (
+                <li className='selected-ingredient'
+                  key={index}
+                  onClick={() => removeIngredient(ingredient)}
+                >
+                  {ingredient}
+                </li>
+              ))}
+            </ul>
+            <div className="button-container">
+              <button className="button clear-ingredients-button" onClick={resetIngredients}>
+                Clear
+              </button>
+              <button className="button search-button" onClick={() => navigate(`/recipes?ingredients=${ingredientsList.join(',')}`)}>
+                Search
+              </button>
+            </div>
+          </div>
       </div>
-    </div>
+    </>
   );
 }
 

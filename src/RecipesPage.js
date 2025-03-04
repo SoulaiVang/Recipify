@@ -11,7 +11,7 @@ const RecipesPage = () => {
 
     const [recipes, setRecipes] = useState([]);
   
-    //Probably shouldnt use UseEffect because it continuously calls the API
+    // Probably shouldnt use UseEffect because it continuously calls the API
     useEffect(() => {
         const searchAPI = async () => {
             console.log("Recipes Searched")

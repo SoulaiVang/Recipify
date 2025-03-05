@@ -41,11 +41,11 @@ const SelectedRecipe = () =>{
                 <img src={adv_information.image} alt='Recipe image' className='recipe-picture'></img>
                 <div className='basic-info'>
                     <div className='info'>
-                        <img src='./assets/clock.png' alt='Servings photo' className='item'></img>
+                        <img src='./assets/clock.png' alt='An icon of a clock for the preparation time' className='item'></img>
                         <p className='item'>Preparation Time (Minutes): {adv_information.readyInMinutes || "NOT AVAILABLE"} </p>
                     </div>
                     <div className='info'>
-                        <img src='./assets/servings.png' alt='Servings photo' className='item2'></img>
+                        <img src='./assets/servings.png' alt='An icon of utensils for the number of servings' className='item2'></img>
                         <p className='item'>Number of Servings: {adv_information.servings || "NOT AVAILABLE"}</p>
                     </div>
 

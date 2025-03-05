@@ -53,8 +53,7 @@ button:hover {
     background-color: #14281D;
 }
 
-/* Powered By Text */
-p:last-child {
+.power-spoonacular {
     font-size: 1rem;
     color: #777;
     margin-top: 20px;

@@ -11,56 +11,22 @@ const RecipesPage = () => {
     const ingredientsList = queryParams.get('ingredients') ? queryParams.get('ingredients').split(',') : [];
 
     const [recipes, setRecipes] = useState([]);
-    const apiKey = '22823358fa704146b115b682b4ff2505';
+    const apiKey = process.env.REACT_APP_API_KEY;
   
-    // Probably shouldnt use UseEffect because it continuously calls the API
-    // useEffect(() => {
-    //     const searchAPI = async () => {
-    //         console.log("Recipes Searched")
-    //         try {
-    //             const apiKey = '22823358fa704146b115b682b4ff2505';
-    //             const response = await axios.get(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey}&ingredients=${ingredientsList.join(',')}`);
-    //             setRecipes(response.data);
-    //             console.log("data retrieved" + response.data);
-
-    //             // Save to local storage
-    //             localStorage.setItem("cachedRecipes", JSON.stringify(response.data));
-    //         } catch(e) {
-    //             console.log("Error fetching recipes:", e);
-    //         }
-    //     };
-    //     searchAPI();
-    // }, []);
-
-    // TODO: FIX THIS SINCE IT CALLS API ONCE AND NEVER AGAIN
-    const fetchRecipes = async (ingredientsList, setRecipes) => {
-        console.log("Recipes Searched");
-    
-        try {
-            const response = await axios.get(
-                `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey}&ingredients=${ingredientsList.join(",")}`
-            );
-            setRecipes(response.data);
-            console.log("Data retrieved", response.data);
-    
-            // Save to local storage
-            localStorage.setItem("cachedRecipes", JSON.stringify(response.data));
-        } catch (e) {
-            console.log("Error fetching recipes:", e);
-        }
-    };
-
+    // TODO: Store data as to not call API during every render/page refresh
     useEffect(() => {
-        // Check if we already have cached data
-        const cachedRecipes = localStorage.getItem("cachedRecipes");
-
-        if (cachedRecipes) {
-            setRecipes(JSON.parse(cachedRecipes)); // Load from cache
-            console.log("Loaded cached recipes");
-        } else if (ingredientsList.length > 0) {
-            fetchRecipes(ingredientsList, setRecipes); // Fetch only if no cache
-        }
-    }, []); // Runs only once on mount
+        const searchAPI = async () => {
+            console.log("Recipes Searched");
+            try {
+                const response = await axios.get(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=${apiKey}&ingredients=${ingredientsList.join(',')}`);
+                setRecipes(response.data);
+                console.log("Data retrieved" + response.data);
+            } catch(e) {
+                console.log("Error fetching recipes:", e);
+            }
+        };
+        searchAPI();
+    }, [ingredientsList, apiKey]);
  
     return (
         <>
@@ -76,7 +42,8 @@ const RecipesPage = () => {
                 <div className='recipes'>
                     <div className='all-recipes'>
                         {recipes.map((title, index) => (
-                            <div className='recipe-card' key={index}>
+
+                            <div className='recipe-card' key={index} onClick={() => navigate(`/selected-recipe?recipe=${JSON.stringify(recipes[index])}`)}>
 
                                 <div className='recipe-overview'>
                                     <img className="recipe-picture" onClick={() => navigate(`/selected-recipe?recipe=${JSON.stringify(recipes[index])}`)} src={recipes[index].image} alt={recipes[index].title} />
